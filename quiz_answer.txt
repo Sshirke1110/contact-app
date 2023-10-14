@@ -1,0 +1,6 @@
+On comparing code 1 and code 2 -> 
+
+
+The choice between the two depends on the desired user experience. If you want to capture clicks on the entire container and log which animal was clicked, use Code 1. If you want to capture clicks only on the individual animal names, use Code 2.
+    
+Code 2 may be considered better if you want more precise tracking of which animal was clicked, but it requires adding an event handler to each animal's div
