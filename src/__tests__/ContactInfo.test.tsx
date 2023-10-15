@@ -2,14 +2,8 @@
 // app.test.js
 import { render, screen } from '@testing-library/react'
 import ContactInfo from '../components/ContactInfo'
-import Contact from '../model/contact';
-// import '@testing-library/jest-dom'
+import { vi } from 'vitest'
 
-interface ContactInfoProps {
-    contact: Contact;
-    onContactUpdate: (id: number | any) => void;
-    onContactDelete: (id: number | any) => void;
-  }
 
   let contact = {
     id: 1, 
@@ -19,10 +13,15 @@ interface ContactInfoProps {
     description: ''
   }
   
+  const onContactDelete = vi.fn().mockImplementation(id => {});
+
+  const onContactUpdate = vi.fn().mockImplementation(id => {});
+
+
 test('landing on a bad page', () => {
     // use <MemoryRouter> when you want to manually control the history
     render(
-    <ContactInfo  contact={contact } onContactDelete={() => {}} onContactUpdate={() => {}}/>
+    <ContactInfo  contact={contact } onContactDelete={onContactDelete} onContactUpdate={onContactUpdate}/>
     )
     expect(true).toBeTruthy();
 
