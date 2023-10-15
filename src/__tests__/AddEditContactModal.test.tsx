@@ -22,7 +22,7 @@ let mockHandleClose = vi.fn()
 
 
 describe('AddEditContactModalPage' , () => {
-  test('landing on a bad page', () => {
+  test('should be truthy', () => {
     render(
       <AddEditContactModal contact={mockContact} loading={MockLoading} isEdit={mockIsEdit} show={mockShow} setShow={mockSetShow} handleAddContact={mockHandleAddContact} handleClose={mockHandleClose}
       handleUpdateContact={mockHandleUpdateContact}

@@ -18,7 +18,7 @@ import { vi } from 'vitest'
   const onContactUpdate = vi.fn().mockImplementation(id => {});
 
 
-test('landing on a bad page', () => {
+test('Contact Info Page', () => {
     // use <MemoryRouter> when you want to manually control the history
     render(
     <ContactInfo  contact={contact } onContactDelete={onContactDelete} onContactUpdate={onContactUpdate}/>
