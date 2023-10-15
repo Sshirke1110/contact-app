@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import HomePage from './layout/HomePage'
-import '@testing-library/jest-dom'
 import NotFound from './components/NotFound'
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
         path="/"
         element={<Navigate to="/contacts" replace />}
       />
-      <Route path="/" element={<HomePage />} />
+      <Route path="/contacts" element={<HomePage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
