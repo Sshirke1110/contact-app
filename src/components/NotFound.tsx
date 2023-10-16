@@ -1,10 +1,14 @@
 import React from 'react'
 
 import '../css/NotFound.css'
+import { Link } from 'react-router-dom'
 function NotFound() {
   return (
     <div className='not-found-page'>
-      <h1>Not Found</h1></div>
+      <h5 className='ml-2'>
+        <Link to="/contacts">Not found please click here to Redirect</Link>
+      </h5>
+    </div>
   )
 }
 

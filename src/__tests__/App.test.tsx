@@ -16,7 +16,7 @@ describe('App', () => {
     )
 
     // verify navigation to "no match" route
-    expect(screen.getByText(/Not Found/)).toBeDefined();
+    expect(screen.getByText(/Not found please click here to Redirect/)).toBeDefined();
   })
 
 })
