@@ -97,6 +97,16 @@ const HomePage = () => {
     setLoading(false)
   };
 
+  function onSubmit(values: Contact) {
+    // same shape as initial values
+    if (isEdit) {
+      handleUpdateContact(values)
+    }
+    else {
+      handleAddContact(values)
+    }
+  }
+
   useEffect(() => {
     getContacts()
   }, []);
@@ -109,11 +119,11 @@ const HomePage = () => {
       )}
       <div className="container">
         <div className=" py-4 d-flex align-items-center justify-content-between">
-          <h2 className="fw-bold text-primary">Contact List</h2>
+          <h2 data-testid="heading-main" className="fw-bold text-primary">Contact List</h2>
           <button type="button" className="btn btn-primary" onClick={() => setShow(true)}>Add contact</button>
         </div>
         <ContactsList sortBydecreasing={sortBydecreasing} contacts={contacts} deleteContact={deleteContact} setContacts={setContacts} getContacts={getContacts} contactUpdate={contactUpdate} />
-        <AddEditContactModal loading={loading} show={show} setShow={setShow} isEdit={isEdit} handleAddContact={handleAddContact} handleClose={handleClose} contact={contact} handleUpdateContact={handleUpdateContact} />
+        <AddEditContactModal loading={loading} show={show} setShow={setShow} isEdit={isEdit} handleAddContact={handleAddContact} handleClose={handleClose} contact={contact} handleUpdateContact={handleUpdateContact} onSubmit={onSubmit} />
       </div>
     </>
   )

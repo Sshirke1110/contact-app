@@ -28,8 +28,8 @@ const ContactInfo: React.FC<ContactInfoProps> = (props) => {
             </div>
           </div>
           <div className="d-flex gap-3">
-            <a data-test-id="update" className='border-none' onClick={() => props.onContactUpdate(contact.id)}><img  className="bg-info p-2" src={edit} width="40" height="40" /></a>
-            <a onClick={() => props.onContactDelete(contact.id)}> <img className="bg-danger p-2" src={deleteImage} width="40" height="40" /></a>
+            <a data-testid="update" className='border-none' onClick={() => props.onContactUpdate(contact.id)}><img  className="bg-info p-2" src={edit} width="40" height="40" /></a>
+            <a data-testid="delete" onClick={() => props.onContactDelete(contact.id)}> <img className="bg-danger p-2" src={deleteImage} width="40" height="40" /></a>
           </div>
         </div>
       </div>

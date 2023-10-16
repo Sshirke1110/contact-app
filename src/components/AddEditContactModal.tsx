@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import React, { Dispatch, SetStateAction } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, Modal } from 'react-bootstrap';
 import * as Yup from 'yup';
 import Contact from '../model/contact';
@@ -12,7 +12,8 @@ type AddContactModalProps = {
   contact: Contact | any;
   handleUpdateContact: (values: Contact) => void
   handleClose: () => void;
-  loading: boolean
+  loading: boolean;
+  onSubmit: (values: Contact) => void
 }
 
 
@@ -36,16 +37,8 @@ const validationSchema = Yup.object().shape({
 });
 
 
-export const AddEditContactModal = ({loading, handleClose, show, handleAddContact, isEdit, contact, handleUpdateContact }: AddContactModalProps) => {
-  function onSubmit(values: Contact) {
-    // same shape as initial values
-    if (isEdit) {
-      handleUpdateContact(values)
-    }
-    else {
-      handleAddContact(values)
-    }
-  }
+export const AddEditContactModal = ({ onSubmit,loading, handleClose, show, isEdit, contact }: AddContactModalProps) => {
+ 
 
   return (
     <Modal show={show} >
@@ -60,7 +53,7 @@ export const AddEditContactModal = ({loading, handleClose, show, handleAddContac
             job: isEdit ? contact.job : '',
             description: isEdit ? contact.description : ''
           }}
-          validationSchema={!isEdit &&  validationSchema}
+          validationSchema={!isEdit && validationSchema}
           onSubmit={onSubmit}
         >
           {({ touched, errors }) => (
@@ -68,7 +61,9 @@ export const AddEditContactModal = ({loading, handleClose, show, handleAddContac
               <div className='my-1'>
                 <h6>Enter the First Name:</h6>
                 <Field name="first_name" placeholder={isEdit ? (contact.first_name) : 'enter first name'} />
-                {errors.first_name && touched.first_name && <div className='text-danger'>{errors.first_name}</div>}
+                <div className="text-danger">
+                  <ErrorMessage name="first_name" component="div" />
+                </div>
               </div>
               <div className='my-1'>
                 <h6>Enter the Last Name:</h6>
@@ -86,7 +81,7 @@ export const AddEditContactModal = ({loading, handleClose, show, handleAddContac
                 {errors.description && touched.description && <div className='text-danger'>{errors.description}</div>}
               </div>
               <Modal.Footer>
-                <Button variant="primary" type="submit" disabled={loading}>
+                <Button variant="primary"  data-testid='submitBtn' type="submit" disabled={loading}>
                   {isEdit ? `Update` : 'Add'}
                 </Button>
                 <Button variant="secondary" onClick={handleClose}>
