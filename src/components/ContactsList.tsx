@@ -33,7 +33,7 @@ const ContactsList: React.FC<ContactsListProps> = ({ contacts, deleteContact, co
       <div className="mt-5 list_box row">
         <div className="my-5 d-flex align-items-center position-relative">
           <h1 className="text-center fw-bolder text-uppercase text-info">Contact List</h1>
-          {contacts && contacts.length === 0 && <img src={decreasingOrder ? oppsort : sort} data-testid="sort-img" width="30" height="30" className="mr-2 position-absolute end-0" onClick={() => setDecreasingOrder(!decreasingOrder)} />}
+          {contacts && contacts.length !== 0 && <img src={decreasingOrder ? oppsort : sort} data-testid="sort-img" width="30" height="30" className="mr-2 position-absolute end-0" onClick={() => setDecreasingOrder(!decreasingOrder)} />}
         </div>
         {contacts &&
           contacts.map((contact: Contact) => (
